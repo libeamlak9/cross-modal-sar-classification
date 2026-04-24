@@ -215,7 +215,6 @@ Our model achieves the following performance on So2Sat LCZ42:
 |---------|----------|-------|
 | 5-way 5-shot | 65.83% | With domain adversarial |
 
-*Note: Update with actual results after training*
 
 ## LCZ Classes
 
