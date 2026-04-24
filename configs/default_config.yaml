@@ -1,0 +1,80 @@
+# Default configuration for Cross-Modal Meta-Learning
+
+# Dataset settings
+data:
+  data_root: '../So2Sat_LCZ42_v4'  # Path to HDF5 files
+  split: 'train'  # Options: train, validation, test
+  n_way: 5  # Classes per episode
+  k_shot: 5  # Support samples per class
+  q_query: 15  # Query samples per class
+  support_optical_count: 3  # Number of optical samples in multimodal support
+
+# Model architecture
+model:
+  # CLIP settings
+  clip_model: 'RN50'  # CLIP model variant
+  
+  # SAR Adapter settings
+  adapter_bottleneck: 64  # Bottleneck dimension for SAR adapter
+  adapter_layers: 'layer4'  # Comma-separated: layer4, layer3,layer4, etc.
+  
+  # LoRA settings
+  lora_r: 16  # LoRA rank
+  lora_alpha: 32  # LoRA alpha scaling
+  visual_lora: 'layer3,layer4'  # Comma-separated layers for visual LoRA
+  text_lora: ''  # Comma-separated layers for text LoRA (empty = none)
+  lora_dropout: 0.0
+  
+  # Text encoder settings
+  unfreeze_text_encoder: false  # Whether to unfreeze CLIP text encoder
+  text_weight: 0.5  # Weight for text-based logits
+  
+  # LDC Head settings
+  use_maf_head: false  # Enable Multi-Attention Fusion head
+  use_icd: true  # Enable Inter-Class Discrimination
+  use_alf: true  # Enable Adaptive Loss Fusion
+
+# Domain adversarial training
+domain_adv:
+  enabled: false  # Enable domain adversarial training
+  weight: 0.1  # Weight for domain adversarial loss
+  discriminator_dims: [256, 128]  # Hidden dimensions for discriminator
+
+# Training settings
+training:
+  epochs: 100
+  episodes_per_epoch: 500
+  val_episodes: 200
+  
+  # Optimizer settings
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  scheduler: 'step'  # Options: step, cosine, none
+  scheduler_step: 30  # Step size for StepLR
+  scheduler_gamma: 0.5  # Gamma for StepLR
+  
+  # Early stopping
+  early_stopping_patience: 10
+  
+  # Checkpointing
+  checkpoint_dir: '../checkpoints_latest'
+  save_best_only: true
+  save_interval: 10  # Save every N epochs
+
+# Evaluation settings
+evaluation:
+  episodes: 100
+  batch_size: 1
+  geo_eval: false  # Enable per-city evaluation
+  output_json: null  # Path to save JSON results
+  
+  # Baseline modes (for ablation)
+  baseline: null  # Options: null, proto_only, text_only, no_adapter
+
+# Logging
+logging:
+  log_interval: 10  # Log every N episodes
+  verbose: true
+
+# Reproducibility
+seed: 42

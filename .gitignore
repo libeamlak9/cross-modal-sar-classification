@@ -1,0 +1,86 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyTorch
+*.pth
+*.pt
+*.ckpt
+checkpoints*/
+!checkpoints/.gitkeep
+
+# Data and models (large files)
+data/
+datasets/
+So2Sat_LCZ42_v4/
+*.h5
+*.hdf5
+model/
+
+# Results and outputs
+results/
+outputs/
+logs/
+*.log
+
+# Images (generated plots)
+*.png
+*.jpg
+*.jpeg
+*.pdf
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Documentation build
+docs/_build/
+
+# CSV logs
+*.csv
+
+# JSON results (unless committed intentionally)
+results.json
