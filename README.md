@@ -2,7 +2,6 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch 2.0+](https://img.shields.io/badge/pytorch-2.0+-red.svg)](https://pytorch.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Cross-modal few-shot learning using CLIP RN50 for Optical→SAR domain transfer on So2Sat LCZ42 dataset. This repository implements a meta-learning framework that leverages both optical (Sentinel-2) and SAR (Sentinel-1) modalities for land cover classification.
 
